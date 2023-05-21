@@ -1,0 +1,76 @@
+<div *ngIf="msgUnauth" class="alert alert-danger w-50 mt-5 mx-auto d-flex justify-content-between" style="margin-bottom: -6.6rem;" role="alert">
+  <span>{{msgUnauth}}</span>
+</div>
+
+<!-- Inicio de sesión -->
+<section class="container mw-20 mw-md-25 mw-lg-30" style="margin-top: 15rem;">
+  <h3 class="text-secondary text-uppercase fw-bold text-center my-5">Iniciar sesión</h3>
+  <form (ngSubmit)="signIn(loginForm)" #loginForm="ngForm">
+    <article class="row">
+      <input
+        class="form-control bg-dark p-3 fw-bold"
+        style="--bs-bg-opacity: .1;"
+        [ngClass]="{'is-invalid': email.invalid && submitted }"
+        placeholder="Correo"
+        type="text"
+        name="email"
+        required
+        pattern=".+@.+\..+"
+        ngModel #email="ngModel"
+      >
+    </article>
+
+    <!-- Validaciones del email -->
+    <div class="text-danger fs-7" *ngIf="email.invalid && submitted">
+      <div *ngIf="email.errors?.['required']">
+        Debe introducir su correo electrónico
+      </div>
+      <div *ngIf="email.errors?.['pattern']">
+        Debe de introducir un correo válido
+      </div>
+    </div>
+
+    <article class="row mt-3">
+      <input
+        class="form-control bg-dark p-3 fw-bold"
+        style="--bs-bg-opacity: .1;"
+        [ngClass]="{'is-invalid': password.invalid && submitted }"
+        placeholder="Contraseña"
+        type="password"
+        name="password"
+        required
+        ngModel #password="ngModel"
+      >
+    </article>
+
+    <!-- Validaciones de la contraseña -->
+    <div class="text-danger fs-7" *ngIf="password.invalid && submitted">
+      <div *ngIf="password.errors?.['required']">
+        Debe introducir su contraseña
+      </div>
+    </div>
+
+    <article class="row mt-3">
+      <div class="col">
+        <input
+          id="remember-check"
+          class="form-check-input"
+          type="checkbox"
+          name="remember"
+        >
+        <label class="form-check-label ms-2" for="remember-check">Recordar</label>
+      </div>
+      <div class="col-7 text-end">
+        <a href="#">¿Contraseña olvidada?</a>
+      </div>
+    </article>
+    <article class="row mt-4">
+      <button class="btn btn-primary p-3 fw-bold text-light text-uppercase" type="submit" >
+        Iniciar sesión
+      </button>
+    </article>
+  </form>
+  <article class="mt-4 row text-center">
+    <span class="col">¿Aún no tienes cuenta? <a class="col text-decoration-none" routerLink="/start/signup">Regístrate</a></span>
+  </article>
+</section>

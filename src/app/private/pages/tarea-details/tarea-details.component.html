@@ -1,0 +1,44 @@
+<main class="container-fluid d-flex align-items-center ms-md-auto me-auto list-container" style="min-width: 23rem; height: 95vh; max-width: 90rem;">
+  <section class="row shadow p-4 w-100">
+    <h2 class="text-secondary row border-bottom pb-2">Tarea</h2>
+    <article class="col-12 col-md-6 mt-3">
+      <h4 class="row text-black-50">Proyecto: </h4>
+      <h5 class="row my-2">Manager: </h5>
+      <div class="row">
+        <span>
+          Última actualización: {{tarea.updateAt}}
+        </span>
+        <span>
+          Fecha de entrega: {{tarea.deadline}}
+        </span>
+      </div>
+    </article>
+    <article class="d-flex align-items-center col-12 col-md-6 mt-3 d-flex">
+      <label class="my-auto me-2" for="state-input">Estado: </label>
+      <select
+      id="selectManager"
+      [ngClass]="{'text-white-50':!manager.value}"
+      class="form-select form-control bg-primary text-white border-0 p-2"
+      name="manager"
+      required
+      ngModel #manager="ngModel"
+      >
+      <option
+        class="bg-light text-black-50"
+        *ngFor="let estado of estados"
+      >
+        {{estado}}
+      </option>
+      </select>
+      <input
+        id="state-input"
+        class="form-control bg-dark text-white border-0 p-2 text-primary"
+        style="--bs-bg-opacity: .1;"
+        type="text"
+        placeholder="{{tarea.state}}"
+        name="state"
+        ngModel #state="ngModel"
+      >
+    </article>
+  </section>
+</main>

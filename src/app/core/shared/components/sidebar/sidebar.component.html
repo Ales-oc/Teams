@@ -1,0 +1,72 @@
+<aside class="d-none d-md-flex">
+  <nav class="navbar navbar-light bg-primary p-0" style="height: 100vh;">
+    <ul class="nav nav-pills flex-column mb-auto text-center text-light p-0">
+
+      <!-- Hacia el Dashboard -->
+      <li class="nav-item tool">
+        <a class="nav-link py-3 border-bottom rounded-0 text-light"
+          routerLink="/home/dashboard"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+          <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+        </svg>
+        </a>
+        <span class="tooltiptext">Dashboard</span>
+      </li>
+
+      <!-- Hacia el chat -->
+      <li class="nav-item tool">
+        <a class="nav-link py-3 border-bottom rounded-0 text-light"
+          routerLink="/home/chat"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+            <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+          </svg>
+        </a>
+        <span class="tooltiptext">Chat</span>
+      </li>
+
+      <!-- Hacia los proyectos y tareas -->
+      <li class="nav-item tool">
+        <a class="nav-link py-3 border-bottom rounded-0 text-light"
+          routerLink="/home/proyectos-y-tareas"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="30" fill="currentColor" class="bi bi-list-ol" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+            <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/>
+          </svg>
+        </a>
+        <span class="tooltiptext">Proyectos y tareas</span>
+      </li>
+    </ul>
+
+    <div class="mt-auto dropup">
+      <a id="dropdownUser"
+        class="nav-link p-0 pt-2 pb-1 border-top rounded-0 text-center text-light"
+        style="width: 64px;"
+        data-bs-toggle="dropdown"
+        href="#"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="row ms-3 bi bi-person-circle text-center" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+        <span class="row text-center ms-1 fs-7">{{username}}</span>
+      </a>
+      <ul class="dropdown-menu shadow">
+        <li class="dropdown-item">Mi Perfil</li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-item" (click)="logout()">Desconectarse</li>
+      </ul>
+    </div>
+  </nav>
+
+</aside>

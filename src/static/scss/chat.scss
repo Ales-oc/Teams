@@ -1,0 +1,30 @@
+.msg_receiver span {
+  text-align: end;
+  margin-left: auto !important;
+}
+
+.msg_receiver .msg-container {
+  background-color: #b9b8fc;
+}
+
+.msg_emitter .msg-container {
+  background-color: #827ffe;
+}
+
+.container-no-msg {
+  background-image: url('../../assets/svg/sent-message.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container-no-contact {
+  background-image: url('../../assets/svg/inbox-cleanup-animate.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.inbox-container {
+  background-image: url('../../assets/svg/inbox-bg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}

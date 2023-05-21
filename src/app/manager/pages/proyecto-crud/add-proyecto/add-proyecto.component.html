@@ -1,0 +1,147 @@
+<main class="container-fluid create-container" style="height: 100vh;">
+  <div *ngIf="msgPostProject"
+    [ngClass]="{'alert-success': msgPostProject.status === 'correct'}"
+    [ngClass]="{'alert-danger': msgPostProject.status === 'error'}"
+    class="alert alert-success w-50 mt-5 mx-auto d-flex text-secondary"
+    style="margin-bottom: -8.1rem;"
+    role="alert">
+    <span>{{msgPostProject.message}}</span>
+  </div>
+  <a class="row text-decoration-none fs-5" href="#" (click)="location.back()">
+    <div class="p-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+        <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+      </svg>
+      <span>
+        Volver
+      </span>
+    </div>
+  </a>
+  <div style="margin-top: 13rem;">
+    <section class="row bg-white border-0 shadow rounded-3 border-primary m-auto" style="width: 50vw; min-width: 20rem;">
+      <div class="d-flex container-fluid justify-content-between card-header bg-primary p-3">
+        <h3 class="col-10 col-lg-8 card-title text-white mb-auto mt-auto fw-bold">Nuevo proyecto</h3>
+        <div class="col-2 col-lg-4 d-flex justify-content-end">
+          <button class="btn btn-outline-light ms-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg fw-bold" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+            </svg>
+            <span class="ms-1 d-none d-md-inline" (click)="createProject(newProjectForm)">Crear proyecto</span>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-5">
+        <form (ngSubmit)="createProject(newProjectForm)" #newProjectForm="ngForm">
+          <article class="row">
+
+            <!-- Nombre Proyecto -->
+            <div class="container-fluid col-12 col-md-6 mb-3 mb-lg-0">
+              <input
+              class="form-control bg-dark p-2"
+              style="--bs-bg-opacity: .1;"
+              [ngClass]="{'is-invalid':nombreP.invalid && submitted}"
+              placeholder="Nombre del proyecto"
+              type="text"
+              name="nombreP"
+              required
+              minlength="5"
+              ngModel #nombreP="ngModel"
+              >
+
+              <!-- Validaciones del nombre proyecto -->
+              <div class="text-danger fs-7" *ngIf="nombreP.invalid && submitted">
+                <div *ngIf="nombreP.errors?.['required']">
+                  Debe introducir el nombre del proyecto
+                </div>
+                <div *ngIf="nombreP.errors?.['minlength']">
+                  El nombre debe tener al menos 5 caracteres
+                </div>
+              </div>
+            </div>
+
+            <!-- Nombre cliente -->
+            <div class="container-fluid col-12 col-md-6">
+              <input
+              class="form-control bg-dark p-2"
+              style="--bs-bg-opacity: .1;"
+              [ngClass]="{'is-invalid':nombreC.invalid && submitted}"
+              placeholder="Cliente"
+              type="text"
+              name="nombreC"
+              required
+              minlength="5"
+              ngModel #nombreC="ngModel"
+              >
+
+              <!-- Validaciones del nombre cliente -->
+              <div class="text-danger fs-7" *ngIf="nombreC.invalid && submitted">
+                <div *ngIf="nombreC.errors?.['required']">
+                  Debe introducir el cliente al que pertenece este proyecto
+                </div>
+                <div *ngIf="nombreC.errors?.['minlength']">
+                  El nombre del cliente debe tener al menos 5 caracteres
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="row mt-3">
+
+            <!-- Manager -->
+            <div class="container-fluid col-12 col-md-8 mb-3 mb-lg-0">
+              <select
+              class="form-select form-control bg-dark p-2"
+              [ngClass]="{'is-invalid':manager.invalid && submitted}"
+              style="--bs-bg-opacity: .1;"
+              name="manager"
+              required
+              ngModel #manager="ngModel"
+              >
+                <option hidden selected value="">Manager responsable</option>
+                <option *ngFor="let manager of managers" value="{{manager._id}}">
+                  {{manager.nombre}}
+                </option>
+              </select>
+
+              <!-- Validaciones Manager -->
+              <div class="text-danger fs-7" *ngIf="manager.invalid && submitted">
+                <div *ngIf="manager.errors?.['required']">
+                  Debe elegir al manager al cargo
+                </div>
+              </div>
+            </div>
+
+            <!-- Versión -->
+            <div class="container-fluid col-12 col-md-4">
+              <div class="input-group">
+                <span class="input-group-text bg-primary text-white fw-bolder">V</span>
+                <input
+                id="version"
+                style="min-width: 5rem;"
+                class=" form-control bg-dark p-2"
+                style="--bs-bg-opacity: .1;"
+                [ngClass]="{'is-invalid':version.invalid && submitted}"
+                type="number"
+                name="version"
+                placeholder="Versión"
+                step=".1"
+                min="0"
+                required
+                ngModel #version="ngModel"
+                >
+              </div>
+
+              <!-- Validaciones Manager -->
+              <div class="text-danger fs-7" *ngIf="version.invalid && submitted">
+                <div *ngIf="version.errors?.['required']">
+                  Debe indicar la versión del proyecto de forma correcta
+                </div>
+              </div>
+            </div>
+          </article>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+
+

@@ -1,0 +1,148 @@
+<!-- Registro de usuario -->
+<section class="container mw-20 mw-md-25 mw-lg-30" style="margin-top: 12rem;">
+  <h3 class="text-secondary text-uppercase fw-bold text-center my-5">Registrarse</h3>
+  <form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm">
+    <article class="row">
+      <div class="col-12 col-md p-0 me-2">
+        <input
+          class="form-control bg-dark p-3 fw-bold"
+          style="--bs-bg-opacity: .1;"
+          [ngClass]="{'is-invalid':nombre.invalid && submitted}"
+          placeholder="Nombre"
+          type="text"
+          name="nombre"
+          required
+          minlength="3"
+          pattern="^[A-Z][A-Za-z]+"
+          ngModel #nombre="ngModel"
+        >
+        <!-- Validaciones del nombre -->
+        <div class="text-danger fs-7" *ngIf="nombre.invalid && submitted">
+          <div *ngIf="nombre.errors?.['required']">
+            Debe introducir su nombre
+          </div>
+          <div *ngIf="nombre.errors?.['minlength']">
+            Su nombre debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="nombre.errors?.['pattern']">
+            Debe de introducir un nombre válido
+          </div>
+        </div>
+      </div>
+
+      <article class="col-12 col-md mt-3 mt-md-0 p-0">
+        <input
+          class="form-control bg-dark p-3 fw-bold"
+          style="--bs-bg-opacity: .1; min-width: 100%;"
+          [ngClass]="{'is-invalid':apellidos.invalid && submitted}"
+          placeholder="Apellidos"
+          type="text"
+          name="apellidos"
+          required
+          minlength="3"
+          pattern="^[A-Z][A-Za-z]+(\s[A-Za-z]+)*"
+          ngModel #apellidos="ngModel"
+        >
+        <!-- Validaciones del apellido -->
+        <div class="text-danger fs-7" *ngIf="apellidos.invalid && submitted">
+          <div *ngIf="apellidos.errors?.['required']">
+            Debe introducir su/s apellido/s
+          </div>
+          <div *ngIf="apellidos.errors?.['minlength']">
+            Su apellido debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="apellidos.errors?.['pattern']">
+            Debe de introducir apellido/s válido/s
+          </div>
+        </div>
+      </article>
+    </article>
+
+    <article class="row mt-3">
+      <input
+        class="m-0 form-control bg-dark p-3 fw-bold"
+        style="--bs-bg-opacity: .1;"
+        placeholder="Correo"
+        [ngClass]="{'is-invalid':email.invalid && submitted}"
+        type="text"
+        name="email"
+        required
+        pattern=".+@.+\..+"
+        ngModel #email="ngModel"
+      >
+    </article>
+    <!-- Validaciones del email -->
+    <div class="text-danger fs-7" *ngIf="email.invalid && submitted">
+      <div *ngIf="email.errors?.['required']">
+        Debe introducir su correo electrónico
+      </div>
+      <div *ngIf="email.errors?.['pattern']">
+        Debe de introducir un correo válido
+      </div>
+    </div>
+
+    <article class="row mt-3">
+      <input
+        class="form-control bg-dark p-3 fw-bold"
+        style="--bs-bg-opacity: .1;"
+        [ngClass]="{'is-invalid':password.invalid && submitted}"
+        placeholder="Contraseña"
+        type="password"
+        name="password"
+        required
+        ngModel #password="ngModel"
+      >
+    </article>
+    <!-- Validaciones de la contraseña -->
+    <div class="text-danger fs-7" *ngIf="password.invalid && submitted">
+      <div *ngIf="password.errors?.['required']">
+        Debe introducir su contraseña
+      </div>
+    </div>
+
+    <article class="row mt-3">
+      <input
+        class="form-control bg-dark p-3 fw-bold"
+        style="--bs-bg-opacity: .1;"
+        [ngClass]="{'is-invalid':repassword.value !== password.value && submitted}"
+        placeholder="Repetir contraseña"
+        type="password"
+        name="repassword"
+        ngModel #repassword="ngModel"
+      >
+    </article>
+    <!-- Validaciones de la contraseña -->
+    <div class="text-danger fs-7" *ngIf="repassword.value !== password.value && submitted">
+      Las contraseñas no coinciden
+    </div>
+
+    <article class="row mt-3">
+      <div class="col">
+        <input
+          id="terms-check"
+          class="form-check-input"
+          [ngClass]="{'is-invalid':terms.invalid && submitted}"
+          type="checkbox"
+          name="terms"
+          required
+          ngModel #terms="ngModel"
+        >
+        <label class="form-check-label ms-2" for="terms-check">Acepto los términos y condiciones de uso</label>
+        <!-- Validaciones de los términos -->
+        <div class="text-danger fs-7" *ngIf="password.invalid && submitted">
+          <div *ngIf="terms.errors?.['required']">
+            Debe aceptar los términos y condiciones de uso
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="row mt-4">
+      <button class="btn btn-primary p-3 fw-bold text-light text-uppercase" type="submit" >
+        Registrarse
+      </button>
+    </article>
+  </form>
+  <article class="mt-4 row text-center">
+    <span class="col">¿Ya tienes una cuenta? <a class="col text-decoration-none" routerLink="/start/login">Inicia sesión</a></span>
+  </article>
+</section>

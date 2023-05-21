@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+
+$primary: #827ffe;
+$secondary: #414080;
+$tertiary: #b9b8fc;
+$light: #f9f8fa;
+$success: #68DFCF;
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Lexend', sans-serif;
+}
+
+body {
+  background-color: $light !important;
+}
+
+.container-dashboard {
+  background-image: url('../../assets/svg/create-bg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-tertiary {
+  background-color: $tertiary !important;
+}
+
+.text-tertiary {
+  color: $tertiary !important;
+}
+
+.fs-7 {
+  font-size: .9rem;
+}
+
+.mw-75 {
+  max-width: 75rem;
+}
+
+.mw-20 {
+  max-width: 20rem;
+}
+
+.l-navbar {
+  width: 4.8rem !important;
+
+}
+
+.form-control.bg-primary{
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),$primary !important;
+  &::placeholder{
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+}
+
+select option:disabled {
+  opacity: .6;
+}
+
+.nav-link.active {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),$primary !important;
+}
+
+.add-icon-span {
+  background: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),$success !important;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important;
+}
+
+.btn-check:focus + .btn-outline-primary, .btn-check:checked + .btn-outline-primary {
+  color: #fff !important;
+}
+
+.btn-outline-light {
+  &:hover, &:active{
+    color: $primary !important;
+  }
+}
+
+/* Media Queries */
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .mw-sm-20{
+    max-width: 20rem !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .mw-md-25{
+    max-width: 25rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .mw-lg-30 {
+    max-width: 30rem !important;
+  }
+}
+
+@import './static/scss/tooltip.scss';
+@import './static/scss/chat.scss';
+@import './static/scss/crud.scss';
+@import './static/scss/paginator.scss';
+@import 'node_modules/bootstrap/scss/bootstrap.scss';

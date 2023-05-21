@@ -1,0 +1,83 @@
+<main class="container-fluid d-flex p-0">
+  <aside class="col-0 col-lg-2 d-none d-md-flex border-start">
+    <nav id="contacts-sidebar" class="navbar navbar-light bg-tertiary align-content-start pt-0" style="height: 100vh;">
+      <h4 class="px-1 pt-3 pb-2 fw-bold text-primary m-0">
+        Contactos
+        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="20" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+        </svg>
+      </h4>
+      <hr class="w-100 m-0 border border-primary border-1">
+        <div *ngFor="let contact of contacts" class="w-100">
+          <input
+          type="radio"
+          class="btn-check"
+          name="contacto"
+          (change)="changeContact(contact)"
+          ngModel #contacto="ngModel"
+          id="radio_{{contact.nombre}}"
+          [value]="contact.nombre"
+          autocomplete="off">
+          <label
+          class="btn btn-outline-primary shadow-none text-secondary w-100 py-3 border-0 rounded-0 border-bottom"
+          for="radio_{{contact.nombre}}">
+            <div class="container-fluid p-0 d-flex justify-content-between">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+              <span>{{contact.nombre}}</span>
+            </div>
+          </label>
+        </div>
+    </nav>
+  </aside>
+
+  <section class="col-12 col-lg-10 container-fluid">
+    <div class="row d-flex flex-column justify-content-between px-5 inbox-container" style="height: 93vh; overflow-y: auto;">
+      <div class="row pt-5" ngClass="{'overflow-hidden':messages.length === 0}">
+        <div *ngIf="!contact" class="text-center container-no-contact" style="height: 85vh;">
+          <span class="fs-5 fw-bold align-self-end">Elige un usuario con el que chatear</span>
+        </div>
+        <div *ngIf="messages.length === 0 && contact" class="text-center container-no-msg" style="height: 85vh;">
+          <span class="fs-5 fw-bold">Aún no tienes mensajes con este usuario. ¡Envíale uno ahora!</span>
+        </div>
+        <div
+          class="container row d-flex"
+          *ngFor="let message of messages"
+          [ngClass]="{
+            'msg_emitter':message.emitter_id === user._id,
+            'msg_receiver':message.emitter_id === contact._id
+          }"
+        >
+          <div class="p-0 m-0 mb-3">
+            <div class="row">
+              <span class="fs-7 text-secondary">{{ message.createdAt }}</span>
+            </div>
+            <div class="row">
+              <span class="msg-container w-auto px-3 py-2 rounded-3 text-white">{{ message.message }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form class="row" *ngIf="contact" (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
+        <div class="input-group mb-3 w-100">
+          <input
+            class="form-control border-primary p-2"
+            type="text"
+            placeholder="Escribe un mensaje..."
+            name="mensaje"
+            ngModel
+            #mensaje="ngModel"
+          >
+          <button type="submit" class="input-group-text btn-primary text-white" id="basic-addon1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+              <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  deploy:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - '127.0.0.1:4200:3000'
+
+  # Replica Set (required for Prisma Client)
+  mongo:
+    build: ./mongodb_replica
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_REPLICA_HOST: host.docker.internal
+      MONGO_REPLICA_PORT: 27018
+    ports:
+      - '27018:27018'
